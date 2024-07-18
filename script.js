@@ -8,8 +8,8 @@ Promise.all([
 
 async function start() { 
   const container = document.createElement('div')
-  // container.style.position = 'relative' 
-  // document.body.append(container)
+  container.style.position = 'relative' 
+  document.body.append(container)
   const labeledFaceDescriptors = await loadLabeledImages()
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
   let image
@@ -41,7 +41,7 @@ function loadLabeledImages() {
     labels.map(async label => {
       const descriptions = []
       for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`https://raw.githubusercontent.com/WebDevSimplified/Face-Recognition-JavaScript/master/labeled_images/${label}/${i}.jpg`)
+        const img = await faceapi.fetchImage(`https://github.com/moisebis00/recog/tree/924950800e9423b416f3aa65d8ec2f2c45e4c5e8/labeled_images/${label}/${i}.jpg`)
         const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
         descriptions.push(detections.descriptor)
       }
