@@ -6,14 +6,14 @@ Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri('/models')
 ]).then(start)
 
-async function start() {
+async function start() { 
   const container = document.createElement('div')
-  container.style.position = 'relative'
-  document.body.append(container)
+  // container.style.position = 'relative' 
+  // document.body.append(container)
   const labeledFaceDescriptors = await loadLabeledImages()
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
   let image
-  let canvas
+  let canvas 
   document.body.append('Loaded')
   imageUpload.addEventListener('change', async () => {
     if (image) image.remove()
